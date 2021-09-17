@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flash Card</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Flash Card</h1>
+    Question: {{ card.question }} <br/>
+    Answer: {{ card.answer }}
+        <p>
+            <a href="{{ url_for('welcome') }}"> <!-- url_for llama la ruta de cierta funcion -->
+                Home
+            </a>
+            <button>
+            {% if index < max_index %}
+                <a href="{{ url_for('card_view', index=index + 1) }}" > 
+                    Next card
+                </a>
+            {% else %}
+                <a href="{{ url_for('card_view', index=0) }}">
+                    Start over
+                </a>
+            {% endif %}
+            </button>
+        </p>
+</body>
+</html>
