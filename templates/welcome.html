@@ -1,29 +1,22 @@
-<!DOCTYPE html>
+{% extends "base.html" %} <!-- Jinja template inheritance -->
 
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Welcome</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <h1>Welcome to my page!</h1>
-        <p>
-            This is the demo application for the course
-            <em>Getting Started with Flask</em>
-            on <a href="https://www.pluralsight.com"> Pluralsight Course</a>.
-        </p>
-        <h2>Flash Cards </h2>
-        <ul>
-            {% for card in cards %}
-                <li>
-                    <a href="{{ url_for('card_view', index=loop.index0) }}"> <!-- lopp.index0 un contador que inicia desde 0 y suma 1 cada vez que pasa el bucle -->
-                        {{card.question}}
-                    </a>
-                </li>
-            {% endfor %}    
-        </ul>
-    </body>
-</html>
+{% block title %}Welcome{% endblock %} <!-- Bloque para titulo -->
+
+{% block content %} <!-- Bloque para body -->
+    <h1>Welcome to my page!</h1>
+    <p>
+        This is the demo application for the course
+        <em>Getting Started with Flask</em>
+        on <a href="https://www.pluralsight.com"> Pluralsight Course</a>.
+    </p>
+    <h2>Flash Cards </h2>
+    <ul>
+        {% for card in cards %}
+            <li>
+                <a href="{{ url_for('card_view', index=loop.index0) }}"> <!-- lopp.index0 un contador que inicia desde 0 y suma 1 cada vez que pasa el bucle -->
+                    {{card.question}}
+                </a>
+            </li>
+        {% endfor %}    
+    </ul>
+{% endblock %}

@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Flash Card</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %} <!-- Herencia de estilos -->
+
+{% block title %}Remove Card{% endblock %}
+
+{% block content %}
     <h1>Flash Card</h1>
     Question: {{ card.question }} <br/>
     Answer: {{ card.answer }}
         <p>
-            <a href="{{ url_for('welcome') }}"> <!-- url_for llama la ruta de cierta funcion -->
+            <a href="{{ url_for('welcome') }}"> 
+                <!-- url_for podemos construir URL estaticas, cuando cambie mi configuracion y quiera alojar -->
+                <!-- mis archivos esaticos de una manera que no sea desde la carpeta estatica no tendremos que cambiar nuestas plantillas -->
                 Home
             </a>
             <button>
@@ -27,5 +24,7 @@
             {% endif %}
             </button>
         </p>
-</body>
-</html>
+        <p>
+            <a href="{{ url_for('remove_card', index=index) }}"> Remove this card </a>
+        </p>
+{% endblock %}
